@@ -22,7 +22,11 @@
                                     <!-- Buttons -->
                                     <div class="row" style="margin-bottom: 10px; margin-left: -2px">
                                         <div class="col-sm-2" style="margin-right: 1rem">
-                                            <button type="submit" class="btn btn-danger">Add To Cart</button>
+                                            <form action="/add_to_cart" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="product_id" value="{{$product['id']}}" name="product_id">
+                                                <button type="submit" class="btn btn-danger">Add To Cart</button>
+                                            </form>
                                         </div>
                                         <div class="col-sm-2">
                                             <button type="submit" class="btn btn-success">Buy Now</button>
