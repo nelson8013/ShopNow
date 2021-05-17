@@ -76,7 +76,7 @@ class ProductController extends Controller
                             ->where('cart.user_id', $loggedInUserId)
                             ->sum('products.price');
 
-        return view('orderNow',['total' => $total]);
+        return view('orderNow',['total' => $tota ordel]);
 
     }
 
