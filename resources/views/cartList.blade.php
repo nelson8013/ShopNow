@@ -22,13 +22,15 @@
                                         <input class="btn btn-default" min="0" name="quantity" value="1" type="button">
                                         <input type="button" class="btn btn-default" value="+">
                                     </div>
+                                    <a href="/ordernow" class="btn btn-danger" style="margin-top: 5px;">Order Now</a>
                                 </div>
                             </div>
-                            <div style="margin-left: 220px;">
+
+                            <div style="margin-left: 220px; margin-top: -50px">
                                 <a href="/remove/{{$item->cart_id}}"  style="margin-right: 7px; text-decoration: none;" class="card-link-secondary small text-uppercase mr-3 btn btn-warning"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Remove item </a>
-                                <a href="#!"  style="margin-right: 50px; text-decoration: none;" class="card-link-secondary small text-uppercase"><span class="glyphicon glyphicon-heart"></span> Move to wish list </a>
-                                <a href="#!" style="margin-right: 7px; text-decoration: none;" class="card-link-secondary small text-uppercase badge"><h6> {{$item->price}} </h6></a>
-                           </div>
+                                <a href="#!"  style="margin-right: 5px; text-decoration: none;" class="card-link-secondary small text-uppercase"><span class="glyphicon glyphicon-heart"></span> Move to wish list </a>
+                                <a href="#!" style="margin-right: 7px; text-decoration: none;" class="card-link-secondary small text-uppercase badge">${{$item->price}}</a>
+                            </div>
                         </div>
                   </div>
                   @endforeach
