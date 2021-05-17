@@ -12,19 +12,13 @@ class UserController extends Controller
 {
     //
 
-    public function __construct()
+    /* public function __construct()
     {
         $this->middleware('auth');
-    }
-
-    public function index()
-    {
-        return "This is the suer Index";
-    }
+    } */
 
     public function login(Request $request){
         //Check that the request email and password match the records in the DB
-        /* echo '<pre>'; var_dump(DB::table('users')->where('email', $request->email )->first()); echo '</pre>'; exit;*/
 
         $user = User::where(['email' => $request->email])->first();
 

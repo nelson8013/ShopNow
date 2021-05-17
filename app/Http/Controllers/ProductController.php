@@ -37,7 +37,7 @@ class ProductController extends Controller
             $cart->save();
             return redirect('/');
         }else{
-            redirect("/login");
+           return  redirect("/login");
         }
 
     }
