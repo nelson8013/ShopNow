@@ -113,4 +113,6 @@ class ProductController extends Controller
         return view('orders', ['orders' => $orders]);
     }
 
+
+
 }
