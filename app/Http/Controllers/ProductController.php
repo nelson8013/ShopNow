@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Order;
 use Session;
 use Illuminate\Support\Facades\DB;
 
@@ -76,8 +77,40 @@ class ProductController extends Controller
                             ->where('cart.user_id', $loggedInUserId)
                             ->sum('products.price');
 
-        return view('orderNow',['total' => $tota ordel]);
+        return view('orderNow',['total' => $total]);
 
+    }
+
+    public function placeOrder(Request $request){
+
+        $userId = Session::get('user')['id'];
+        $allCart = Cart::where('user_id', $userId)->get();
+
+        foreach($allCart as $cart){
+            $order = new Order;
+            $order->product_id = $cart['product_id'];
+            $order->user_id = $cart['user_id'];
+            $order->status = "pending";
+            $order->payment_method = $request->payment;
+            $order->payment_status = "successful";
+            $order->address = $request->address;
+            $order->save();
+            Cart::where('user_id', $userId)->delete();
+        }
+
+        return redirect('/');
+    }
+
+
+    public function orders(){
+        $loggedInUserId = Session::get('user')['id'];
+
+        $orders = $products = DB::table('orders')
+                            ->join('products', 'orders.product_id', '=', 'products.id')
+                            ->where('orders.user_id', $loggedInUserId)
+                            ->get();
+
+        return view('orders', ['orders' => $orders]);
     }
 
 }

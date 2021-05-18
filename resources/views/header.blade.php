@@ -26,7 +26,7 @@ if(Session()->has('user')){
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">Home</a></li>
-        <li class=""><a href="#">Orders</a></li>
+        <li class=""><a href="/orders">Orders</a></li>
       </ul>
 
       <form class="navbar-form navbar-left" action="/search">
@@ -37,7 +37,7 @@ if(Session()->has('user')){
       </form>
 
       <ul class="nav navbar-nav navbar-right" style="margin-right: 5px;">
-        <li><a href="/cartlist">Cart({{$total}})</a></li>
+        <li><a href="/cartlist"><span class="glyphicon glyphicon-shopping-cart">({{$total}})</span></a></li>
         @if (Session::has('user'))
             <li class="dropdown">
                 <a class="dropdown-toggle"  data-toggle="dropdown" href="#">{{ Session::get('user')['name'] }}
